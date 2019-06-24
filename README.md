@@ -1,13 +1,14 @@
-koa-body [![Build Status](https://travis-ci.org/dlau/koa-body.svg?branch=koa2)](https://travis-ci.org/dlau/koa-body) [![Dependencies Status](https://david-dm.org/dlau/koa-body/status.svg)](https://david-dm.org/dlau/koa-body) [![KoaJs Slack](https://img.shields.io/badge/Koa.Js-Slack%20Channel-Slack.svg?longCache=true)](https://communityinviter.com/apps/koa-js/koajs)
+nelts-body [![Build Status](https://travis-ci.org/dlau/koa-body.svg?branch=koa2)](https://travis-ci.org/dlau/koa-body) [![Dependencies Status](https://david-dm.org/dlau/koa-body/status.svg)](https://david-dm.org/dlau/koa-body) [![KoaJs Slack](https://img.shields.io/badge/Koa.Js-Slack%20Channel-Slack.svg?longCache=true)](https://communityinviter.com/apps/koa-js/koajs)
 ================
 
 > A full-featured [`koa`](https://github.com/koajs/koa) body parser middleware. Supports `multipart`, `urlencoded`, and `json` request bodies. Provides the same functionality as Express's bodyParser - [`multer`](https://github.com/expressjs/multer).
+> It forks from koa-body
 
 ## Install
 >Install with [npm](https://github.com/npm/npm)
 
 ```
-npm install koa-body
+npm install @nelts/nelts-body
 ```
 
 ## Features
@@ -79,6 +80,29 @@ app.use(router.routes());
 
 app.listen(3000);
 console.log('curl -i http://localhost:3000/users -d "name=test"');
+```
+
+## Usage with nelts
+
+```javascript
+import { Extra, Decorator, Component, Plugin } from '@nelts/nelts';
+
+@Decorator.Controller.Prefix()
+export default class Demo extends Component.Controller {
+  constructor(plugin: Plugin) {
+    super(plugin);
+  }
+
+  @Decorator.Controller.Request.Dynamic.Loader(Extra.Body(...))
+  async Home(ctx) {
+    // ctx.request.body;
+    // ctx.request.files;
+    ctx.body = {
+      body: ctx.request.body,
+      files: ctx.request.files,
+    }
+  }
+}
 ```
 
 
