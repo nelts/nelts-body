@@ -70,7 +70,7 @@ function requestbody(opts) {
     // only parse the body on specifically chosen methods
     if (opts.parsedMethods.includes(ctx.method.toUpperCase())) {
       try {
-        if (opts.json && ctx.is('json')) {
+        if ((opts.json && ctx.is('json')) || (opts.json && opts.isapi)) {
           bodyPromise = buddy.json(ctx, {
             encoding: opts.encoding,
             limit: opts.jsonLimit,

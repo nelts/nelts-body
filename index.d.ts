@@ -47,6 +47,7 @@ declare namespace koaBody {
         onFileBegin?: (name: string, file: any) => void;
     }
     interface IKoaBodyOptions {
+        isapi: boolean;
         /**
          * {Boolean} Patch request body to Node's ctx.req, default false
          *
