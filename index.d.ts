@@ -1,4 +1,4 @@
-import * as Koa from "koa";
+import * as Compose from "koa-compose";
 import { Files } from 'formidable';
 
 declare namespace koaBody {
@@ -130,7 +130,7 @@ declare namespace koaBody {
         /**
          * {Function} Custom error handle, if throw an error, you can customize the response - onError(error, context), default will throw
          */
-        onError?: (err: Error, ctx: Koa.Context) => void;
+        onError?: (err: Error, ctx: any) => void;
 
         /**
          * {Boolean} If enabled, don't parse GET, HEAD, DELETE requests; deprecated.
@@ -156,6 +156,6 @@ declare namespace koaBody {
     }
 }
 
-declare function koaBody (options?: koaBody.IKoaBodyOptions): Koa.Middleware<{}, {}>;
+declare function koaBody<T = any> (options?: koaBody.IKoaBodyOptions): Compose.Middleware<T>;
 
 export = koaBody;

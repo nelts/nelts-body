@@ -1,6 +1,6 @@
 {
   "name": "@nelts/nelts-body",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Koa body parser middleware. Supports multipart, urlencoded and JSON request bodies.",
   "main": "index.js",
   "types": "./index.d.ts",
@@ -37,8 +37,10 @@
   ],
   "dependencies": {
     "@types/formidable": "^1.0.31",
+    "@types/koa-compose": "^3.2.4",
     "co-body": "^5.1.1",
-    "formidable": "^1.1.1"
+    "formidable": "^1.1.1",
+    "koa-compose": "^4.1.0"
   },
   "devDependencies": {
     "@types/koa": "^2.0.39",
