@@ -77,20 +77,20 @@ function requestbody(opts) {
             strict: opts.jsonStrict,
             returnRawBody: opts.includeUnparsed
           });
-        } else if (opts.urlencoded && ctx.is('urlencoded')) {
+        } else if ((opts.urlencoded && ctx.is('urlencoded')) || (opts.json && opts.isurlencoded)) {
           bodyPromise = buddy.form(ctx, {
             encoding: opts.encoding,
             limit: opts.formLimit,
             queryString: opts.queryString,
             returnRawBody: opts.includeUnparsed
           });
-        } else if (opts.text && ctx.is('text')) {
+        } else if ((opts.text && ctx.is('text')) || (opts.text && opts.istext)) {
           bodyPromise = buddy.text(ctx, {
             encoding: opts.encoding,
             limit: opts.textLimit,
             returnRawBody: opts.includeUnparsed
           });
-        } else if (opts.multipart && ctx.is('multipart')) {
+        } else if ((opts.multipart && ctx.is('multipart')) || (opts.json && opts.ismultipart)) {
           bodyPromise = formy(ctx, opts.formidable);
         }
       } catch (parsingError) {

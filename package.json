@@ -1,6 +1,6 @@
 {
   "name": "@nelts/nelts-body",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Koa body parser middleware. Supports multipart, urlencoded and JSON request bodies.",
   "main": "index.js",
   "types": "./index.d.ts",
