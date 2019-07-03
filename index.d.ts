@@ -48,6 +48,9 @@ declare namespace koaBody {
     }
     interface IKoaBodyOptions {
         isapi?: boolean;
+        isurlencoded?: boolean,
+        istext?: boolean,
+        ismultipart?: boolean,
         /**
          * {Boolean} Patch request body to Node's ctx.req, default false
          *
